@@ -14,12 +14,11 @@ module.exports = (config, env) => {
 
   config.plugins.splice(HtmlWebpackPluginIndex, 1);
   const htmlPlugins = generateHTMLPlugins(env);
+
   config.plugins = htmlPlugins.concat(config.plugins);
 
   if (env === 'production') {
     const prerenderSPAPlugins = generatePrerenderSPAPlugins();
-
-    console.log(prerenderSPAPlugins);
 
     config.plugins = config.plugins.concat(prerenderSPAPlugins);
 
@@ -49,7 +48,7 @@ function generateHTMLPlugins(env) {
     });
   }
 
-  return new HtmlWebpackPlugin(getHtmlWebpackPluginConfig(env, devLocale));
+  return [new HtmlWebpackPlugin(getHtmlWebpackPluginConfig(env, devLocale))];
 }
 
 function generatePrerenderSPAPlugins() {

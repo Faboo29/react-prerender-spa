@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import data from './data/content.json';
 import Child from './components/Child';
 
-export default function App(props) {
+interface IAppProps {
+  localeId: string;
+}
+
+export default function App(props: IAppProps) {
   const { localeId } = props;
-  console.log(data);
-
-  console.log(localeId);
-
   const content = data.filter(locale => locale.id === localeId)[0];
 
   return (
