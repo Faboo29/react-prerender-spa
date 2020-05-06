@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SubChild = props => {
+const SubChild = () => {
   return (
     <div>
       <h2>Sub child</h2>
